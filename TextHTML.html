@@ -63,9 +63,42 @@
 
 <div class="mb-3 col-12 d-flex justify-content-center align-items-center" style="width:100%">
     <div class="col-4">
-      <label for="exampleFormControlTextarea1" class="form-label">Письмо</label>
+      <div class="text-center m-1 display-5">
+          <label for="exampleFormControlTextarea1" class="form-label">Письмо</label>
+      </div>
       <textarea class="form-control" id="exampleFormControlTextarea1" rows="20"></textarea>
+      <div class="hstack gap-3 justify-content-end m-2">
+          <button id='btmSubmit' type="button" class="btn btn-secondary">Готово</button>
+          <div class="vr"></div>
+          <button id = 'btmReset' type="button" class="btn btn-outline-danger">Удалить все</button>
+      </div>
     </div>
 </div>
+<script>
+    document.querySelector("#btmReset").addEventListener('click', function() {
+
+    document.querySelector("#exampleFormControlTextarea1").value = ''})
+
+    function textToClipboard (text) {
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+    }
+
+    document.querySelector("#btmSubmit").addEventListener('click', function() {
+
+    text = document.querySelector("#exampleFormControlTextarea1").value
+
+    var base64 = window.btoa(encodeURIComponent(text));
+
+    url = `https://gamisych.github.io/?key=${base64}`
+
+    textToClipboard(url)
+
+    })
+</script>
 </body>
 </html>

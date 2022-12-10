@@ -75,6 +75,15 @@
     </div>
 </div>
 <script>
+    function textToClipboard (text) {
+        var dummy = document.createElement("textarea");
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        document.execCommand("copy");
+        document.body.removeChild(dummy);
+    }
+
     const queryString = window.location.search;
 
     const parameters = new URLSearchParams(queryString);
@@ -89,15 +98,6 @@
     document.querySelector("#btmReset").addEventListener('click', function() {
 
     document.querySelector("#exampleFormControlTextarea1").value = ''})
-
-    function textToClipboard (text) {
-        var dummy = document.createElement("textarea");
-        document.body.appendChild(dummy);
-        dummy.value = text;
-        dummy.select();
-        document.execCommand("copy");
-        document.body.removeChild(dummy);
-    }
 
     document.querySelector("#btmSubmit").addEventListener('click', function() {
 

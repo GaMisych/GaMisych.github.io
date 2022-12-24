@@ -110,6 +110,7 @@
     text = document.querySelector("#exampleFormControlTextarea1").value
 
     var base64 = LZString.compressToEncodedURIComponent(text);
+    alert(base64)
 
     url = `https://gamisych.github.io/TextHTML.html?key=${base64}`
 

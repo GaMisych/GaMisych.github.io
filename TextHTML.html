@@ -12,6 +12,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Amatic+SC&display=swap" rel="stylesheet">
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"  integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lz-string/1.4.4/lz-string.min.js"  integrity="sha512-qoCTmFwBtCPvFhA+WAqatSOrghwpDhFHxwAGh+cppWonXbHA09nG1z5zi4/NGnp8dUhXiVrzA6EnKgJA+fyrpw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <style>
         textarea{font-family: 'Amatic SC', cursive, cursive !important;
         font-size: 40px !important;}
@@ -97,7 +98,8 @@
     if (value == null){
         console.log(value)}
     else{
-        document.querySelector("#exampleFormControlTextarea1").value = decodeURIComponent(window.atob(value))}
+        console.log(value)
+        document.querySelector("#exampleFormControlTextarea1").value = LZString.decompressFromEncodedURIComponent(value)}
 
     document.querySelector("#btmReset").addEventListener('click', function() {
 
@@ -107,7 +109,7 @@
 
     text = document.querySelector("#exampleFormControlTextarea1").value
 
-    var base64 = window.btoa(encodeURIComponent(text));
+    var base64 = LZString.compressToEncodedURIComponent(text);
 
     url = `https://gamisych.github.io/TextHTML.html?key=${base64}`
 
